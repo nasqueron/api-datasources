@@ -1,0 +1,30 @@
+{
+  "linters": {
+    "chmod": {
+      "type": "chmod"
+    },
+    "filename": {
+      "type": "filename"
+    },
+    "jshint-node": {
+      "type": "jshint",
+      "include": [
+        "(\\.js$)"
+      ]
+    },
+    "json": {
+      "type": "json",
+      "include": [
+        "(^\\.arcconfig$)",
+        "(^\\.arclint$)",
+        "(\\.json$)"
+      ]
+    },
+    "merge-conflict": {
+      "type": "merge-conflict"
+    },
+    "spelling": {
+      "type": "spelling"
+    }
+  }
+}

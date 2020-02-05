@@ -1,0 +1,15 @@
+{
+    "esversion": 6,
+    "node": true,
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "futurehostile": true,
+    "maxparams": 3,
+    "noarg": true,
+    "nocomma": true,
+    "nonew": true,
+    "regexpu": true,
+    "strict": "global",
+    "trailingcomma": true
+}

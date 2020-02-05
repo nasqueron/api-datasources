@@ -1,0 +1,31 @@
+{
+  "name": "nasqueron-api-datasources",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev-start": "nodemon bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devcentral.nasqueron.org/source/api-datasources.git"
+  },
+  "keywords": [
+    "nasqueron",
+    "api",
+    "datasources"
+  ],
+  "author": "Sébastien Santoro <dereckson@espace-win.org>",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "debug": "~2.6.9",
+    "express": "^4.17.1",
+    "htmlparser2": "^4.0.0",
+    "morgan": "~1.9.1",
+    "domhandler": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
