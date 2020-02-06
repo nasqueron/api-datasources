@@ -36,7 +36,11 @@ function formatDatasources(base_url) {
     Routes
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
-function isPortRequired(protocol, port) {
+function isPortRequired(protocol, forwardedProtocol, port) {
+  if (forwardedProtocol === "https") {
+    return port !== 80 && port !== 443;
+  }
+
   return (protocol === "http" && port !== 80) ||
          (protocol === "https" && port !== 443);
 }
@@ -45,7 +49,7 @@ function getServerUrl(req) {
   const port = app.get("port");
   let url = req.protocol + "://" + req.hostname;
 
-  if (isPortRequired(req.protocol, port)) {
+  if (isPortRequired(req.protocol, req.get('X-Forwarded-Proto'), port)) {
     url += ":" + port;
   }
 
