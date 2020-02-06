@@ -17,7 +17,7 @@ const app = require('./app');
 
 const datasources = [
   {
-    url: "dev/openfire/changelog",
+    url: "/dev/openfire/changelog",
     controller: "/dev/openfire/changelog.js",
     description: "Openfire changelog",
   },
@@ -41,7 +41,7 @@ function isPortRequired(protocol, port) {
          (protocol === "https" && port !== 443);
 }
 
-function getUrl(req) {
+function getServerUrl(req) {
   const port = app.get("port");
   let url = req.protocol + "://" + req.hostname;
 
@@ -49,19 +49,18 @@ function getUrl(req) {
     url += ":" + port;
   }
 
-  url += req.url;
-
   return url;
 }
 
-router.get('/', function(req, res) {
-  let url = getUrl(req);
+router.get("/", function(req, res) {
+  const api_entry_point = process.env.API_ENTRY_POINT || '/datasources';
+  const url = getServerUrl(req) + api_entry_point;
 
   res.send(JSON.stringify(formatDatasources(url)));
 });
 
 datasources.forEach(function (datasource) {
-  router.get('/' + datasource.url, function (req, res) {
+  router.get(datasource.url, function (req, res) {
     require("./controllers/" + datasource.controller)
         .get(req, res);
   });

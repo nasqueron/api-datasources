@@ -20,4 +20,5 @@ app.use(logger('dev', {
 
 module.exports = app;
 
-app.use('/', require('./routes'));
+const api_entry_point = process.env.API_ENTRY_POINT || '/datasources';
+app.use(api_entry_point, require('./routes'));
